@@ -9,11 +9,11 @@ const arrayOfCats = [
     'chris'
 ];
 
-function Cats(props) {
+function Cats({match, history}) {
 
     const catLink = arrayOfCats.map(catName => (
         <li>
-            <Link to={`${props.match.path}/${catName}`}>{catName}</Link>                
+            <Link to={`${match.path}/${catName}`}>{catName}</Link>                
         </li>
     ));
 
@@ -28,6 +28,13 @@ function Cats(props) {
                 <li>
                     <Link to="/cats/milla">Milla</Link>
                 </li> */}
+                <button onClick={() => {
+                    // history.push lets us programmatically go to a different route
+                    // you can use this instead of a component
+                    // you will use this instead of <Link> if you need to trigger some other custom code, like setState
+                    history.push('/');
+                    // 'history' is not an array, but you can imagine that it manages the paths you've been to as an array
+                }}>Go Home</button>
             </ul>
         </div>
     )
